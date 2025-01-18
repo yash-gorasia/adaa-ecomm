@@ -4,6 +4,7 @@ import cors from "cors";
 
 //utiles
 import connectDB from "./config/db.js";
+import userRoutes from "./routes/userRoute.js";
 
 dotenv.config();
 
@@ -20,6 +21,9 @@ app.use(cors({
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+
+app.use('/api/users', userRoutes);
 
 
 app.listen(port, () => {
