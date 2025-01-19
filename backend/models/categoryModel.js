@@ -1,7 +1,7 @@
-import mongoose,{Schema} from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const categorySchema = new Schema({
-    category_name: { type: String, required: true },
+    category_name: { type: String, required: true, unique: true },
 }, {
     timestamps: true
 });

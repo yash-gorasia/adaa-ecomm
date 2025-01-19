@@ -4,6 +4,8 @@ import Subcategory from '../models/subCategoryModel.js'; // Import Subcategory m
 // Create a new category
 const createCategory = async (req, res) => {
     try {
+        console.log(req.body); 
+
         const { category_name } = req.body; // Updated to match schema field
 
         if (!category_name) {

@@ -1,20 +1,20 @@
-// // routes/orderRoutes.js
-// import express from 'express';
-// import {
-//     createOrder,
-//     fetchAllOrders,
-//     fetchOrderById,
-//     updateOrder,
-//     deleteOrder
-// } from '../controllers/orderController.js';
+// routes/orderRoutes.js
+import express from 'express';
+import {
+    createOrder,
+    fetchAllOrders,
+    fetchOrderById,
+    updateOrder,
+    deleteOrder
+} from '../controllers/orderController.js';
 
-// const router = express.Router();
+const router = express.Router();
 
-// // Order routes
-// router.post('/createOrder', createOrder); // Create a new order
-// router.get('/fetchAllOrders', fetchAllOrders); // Fetch all orders
-// router.get('/fetchOrderById/:id', fetchOrderById); // Fetch a single order by ID
-// router.put('/updateOrder/:id', updateOrder); // Update an order
-// router.delete('/deleteOrder/:id', deleteOrder); // Delete an order
+// Order routes
+router.post('/createOrder', createOrder); // Create a new order
+router.get('/fetchAllOrders', fetchAllOrders); // Fetch all orders
+router.get('/fetchOrderById/:id', fetchOrderById); // Fetch a single order by ID
+router.put('/updateOrder/:id', updateOrder); // Update an order
+router.delete('/deleteOrder/:id', deleteOrder); // Delete an order
 
-// export default router;
+export default router;
