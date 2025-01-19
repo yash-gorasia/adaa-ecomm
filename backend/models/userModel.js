@@ -1,4 +1,4 @@
-import mongoose,{Schema} from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 
 const userSchema = new Schema({
     name: { type: String, required: true },
@@ -6,8 +6,9 @@ const userSchema = new Schema({
     password: { type: String, required: true },
     age: { type: Number },
     gender: { type: String },
-    phone_number: { type: String },
+    phone_number: { type: Number },
     address: { type: String },
+    profileCompleted: { type: Boolean, default: false },
 }, {
     timestamps: true
 });

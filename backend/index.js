@@ -9,6 +9,9 @@ import userRoutes from "./routes/userRoute.js";
 import productRoutes from "./routes/productRoute.js";
 import categoryRoutes from "./routes/categoryRoute.js";
 import subcategoryRoutes from "./routes/subcategoryRoute.js";
+// import orderRoutes from "./routes/orderRoute.js";
+// import orderItemRoutes from "./routes/orderItemRoute.js";
+// import cartRoutes from "./routes/cartRoute.js";
 
 dotenv.config();
 
@@ -32,7 +35,9 @@ app.use('/api/users', userRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/subcategories', subcategoryRoutes);
-
+// app.use('/api/orders', orderRoutes);
+// app.use('/api/orderItems', orderItemRoutes);
+// app.use('/api/cart', cartRoutes);
 
 app.listen(port, () => {
     console.log(`server is running on ${process.env.PORT}`);
