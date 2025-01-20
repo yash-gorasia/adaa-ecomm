@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from "dotenv";
 import cors from "cors";
 import formidable from "express-formidable";
+import path from "path";
 
 //utiles
 import connectDB from "./config/db.js";
@@ -12,6 +13,8 @@ import subcategoryRoutes from "./routes/subcategoryRoute.js";
 import orderRoutes from "./routes/orderRoute.js";
 import orderItemRoutes from "./routes/orderItemRoute.js";
 import cartRoutes from "./routes/cartRoute.js";
+
+import uploadRoutes from './routes/uploadRoute.js';
 
 dotenv.config();
 
@@ -31,26 +34,8 @@ app.use(cors({
 // app.use(express.json());
 // app.use(express.urlencoded({ extended: true }));
 
-// Custom middleware to conditionally parse the body
-app.use((req, res, next) => {
-    if (req.headers['content-type']?.startsWith('multipart/form-data')) {
-        // Use formidable for multipart/form-data
-        const form = formidable({ multiples: true });
-        form.parse(req, (err, fields, files) => {
-            if (err) {
-                next(err);
-                return;
-            }
-            req.body = fields; // Attach parsed fields to req.body
-            req.files = files; // Attach parsed files to req.files
-            next();
-        });
-    } else {
-        // Use express.json() or express.urlencoded() for other content types
-        express.json()(req, res, next);
-    }
-});
-
+// Middleware for handling JSON requests
+app.use(express.json());
 
 
 app.use('/api/users', userRoutes);
@@ -60,6 +45,11 @@ app.use('/api/subcategories', subcategoryRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/orderItems', orderItemRoutes);
 app.use('/api/cart', cartRoutes);
+
+app.use("/api/upload", uploadRoutes);
+
+const __dirname = path.resolve()
+app.use('/uploads', express.static(path.join(__dirname + '/uploads')));
 
 app.listen(port, () => {
     console.log(`server is running on ${process.env.PORT}`);
